@@ -1,0 +1,250 @@
+{
+  "info": {
+    "name": "projectX-backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "johndoe",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "john@example.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "securepassword",
+                  "type": "text"
+                },
+                {
+                  "key": "fullName",
+                  "value": "{\"firstName\": \"John\", \"lastName\": \"Doe\"}",
+                  "type": "text"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file"
+                },
+                {
+                  "key": "coverImage",
+                  "type": "file"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "register"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"johndoe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"securepassword\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Logout User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "logout"
+              ]
+            },
+            "description": "Auth Note: This route requires verifyJWT authentication."
+          }
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currPassword\": \"oldpassword\",\n  \"newPassword\": \"newpassword\",\n  \"ConfirmNewPassword\": \"newpassword\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/change-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "change-password"
+              ]
+            },
+            "description": "Auth Note: This route requires verifyJWT authentication."
+          }
+        },
+        {
+          "name": "Current User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/current-user",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "current-user"
+              ]
+            },
+            "description": "Auth Note: This route requires verifyJWT authentication."
+          }
+        },
+        {
+          "name": "Update Account Details",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "newUsername",
+                  "value": "newjohndoe",
+                  "type": "text"
+                },
+                {
+                  "key": "newEmailAddress",
+                  "value": "newjohn@example.com",
+                  "type": "text"
+                },
+                {
+                  "key": "newFirstName",
+                  "value": "Johnny",
+                  "type": "text"
+                },
+                {
+                  "key": "newMiddleName",
+                  "value": "M",
+                  "type": "text"
+                },
+                {
+                  "key": "newLastName",
+                  "value": "Doe",
+                  "type": "text"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file"
+                },
+                {
+                  "key": "coverImage",
+                  "type": "file"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/update-accountDetails",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "update-accountDetails"
+              ]
+            },
+            "description": "Auth Note: This route requires verifyJWT authentication."
+          }
+        },
+        {
+          "name": "Get User Channel Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/ch/:username",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "ch",
+                ":username"
+              ],
+              "variable": [
+                {
+                  "key": "username",
+                  "value": "johndoe"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get User Watch History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/history",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "history"
+              ]
+            },
+            "description": "Auth Note: This route requires verifyJWT authentication."
+          }
+        }
+      ]
+    }
+  ]
+}
