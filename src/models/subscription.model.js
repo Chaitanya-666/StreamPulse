@@ -23,4 +23,7 @@ const subscriptionSchema = new Schema(
   }
 );
 
+// Prevent duplicate subscriptions and optimize lookups
+subscriptionSchema.index({ subscriber: 1, subscribedTo: 1 }, { unique: true });
+
 export const Subscription = mongoose.model("Subscription", subscriptionSchema);

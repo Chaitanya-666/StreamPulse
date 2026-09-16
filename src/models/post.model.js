@@ -13,7 +13,7 @@ const postSchema = new Schema(
       type: String,
       required: true,
       minlength: [3, "Post content needs atleast 3 characters"],
-      maxlength: [20, "Post content cannot exceed 20 characters"],
+      maxlength: [500, "Post content cannot exceed 500 characters"],
     },
   },
   {

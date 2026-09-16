@@ -26,5 +26,8 @@ const commentSchema = new Schema(
   }
 );
 
+// Index to optimize fetching comments of a video sorted by time
+commentSchema.index({ video: 1, createdAt: -1 });
+
 commentSchema.plugin(mongooseAggregatePaginate);
 export const Comment = model("Comment", commentSchema);

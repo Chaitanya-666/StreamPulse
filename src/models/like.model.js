@@ -28,5 +28,10 @@ const likeSchema = new Schema(
   }
 );
 
+// Ensure a user can only like a specific target once (using sparse because targets are optional)
+likeSchema.index({ video: 1, likedBy: 1 }, { unique: true, sparse: true });
+likeSchema.index({ comment: 1, likedBy: 1 }, { unique: true, sparse: true });
+likeSchema.index({ post: 1, likedBy: 1 }, { unique: true, sparse: true });
+
 likeSchema.plugin(mongooseAggregatePaginate);
 export const Like = model("Like", likeSchema);
