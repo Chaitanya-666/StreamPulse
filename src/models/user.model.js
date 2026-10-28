@@ -79,14 +79,13 @@ const UserSchema = new Schema(
 UserSchema.pre("save", async function () {
   // arrow functions cannot bind  this
   if (!this.isModified("password")) return; // if isnt changed goto next appropriate  handler else encrypt and  save again , old hash overwrriten i guess ?
-  this.password = bcrypt.hash(this.password, 10);
+  this.password = await bcrypt.hash(this.password, 10);
   // removed await keyword from here
 });
 // also need a middleware for password verification , writing our own custom hook
 
 UserSchema.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password, this.password);
-  // we need to pass normal plaintext string pass , and  the pass hashed by and saved in this User model ?
 };
 
 // can inject as many methods as we want into this user schema
